@@ -1,35 +1,37 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import Askim from "./Askim";
+import MySection from "./MySection";
+import MyButton from "./MyButton";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
+    <div>
       <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
+        <Askim />
         <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
+          Hello, <strong>JSX</strong>
         </p>
+
+        <h1>HTML Etiketleri JSX Icinde</h1>
+
+        <button title="Tikla">Bana Tikla</button>
+
+        <p>Bu bir <code>inline code</code> ornegidir</p>
+        <input type="text" placeholder="Adinizi Girin ULAN" />
+
+        <ul>
+          <li>Liste Elemani 1</li>
+          <li>Liste Elemani 2</li>
+          <li>Liste Elemani 3</li>
+        </ul>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+
+      <div>
+        <MySection>
+          <MyButton />
+        </MySection>
+      </div>
+    </div>
+  );
 }
 
-export default App
+export default App;

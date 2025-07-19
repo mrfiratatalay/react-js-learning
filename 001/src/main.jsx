@@ -1,10 +1,16 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.jsx'
+import ReactDOM from "react-dom/client";
 
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
-)
+const enabled = false;
+const text = "Hello, World!";
+const placeholder = "Type here...";
+const size = 50;
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+
+root.render(
+  <section>
+    <button disabled={!enabled}>{text}</button>
+    <input placeholder={placeholder} size={size} />
+  </section>
+
+);

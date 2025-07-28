@@ -1,4 +1,6 @@
 import { useCallback, useState } from "react";
+import AddArticle from "./AddArticle";
+import ArticleList from "./ArticleList";
 
 const id = (function* () {
     let i = 1;
@@ -52,63 +54,20 @@ function MyFeature() {
         setArticles((state) => state.filter((article) => article.id !== id));
     }, []);
 
-    const onClickToggle = useCallback((id) => {
-        setArticles((state) => {
-            const articles = [...state];
-            const index = articles.findIndex((article) => article.id === id);
-            articles[index] = {
-                ...articles[index],
-                display: articles[index].display ? "" : "none",
-            };
-
-            return articles;
-        })
-    }, []);
-
-
     return (
         <section>
-            <header>
-                <h1>Articles</h1>
-                <input
-                    placeholder="Title"
-                    value={title}
-                    onChange={onChangeTitle}
-                />
-                <input
-                    placeholder="Summary"
-                    value={summary}
-                    onChange={onChangeSummary}
-                />
-                <button onClick={onClickAdd}>Add</button>
-            </header>
-
-            <article>
-                <ul>
-                    {articles.map((i) => (
-                        <li key={i.id.value}>
-                            <a
-                                href={`#${i.id}`}
-                                title="Toggle Summary"
-                                onClick={() => onClickToggle(i.id)}
-                            >
-                                {i.title}
-                            </a>
-                            &nbsp;
-                            <button
-                                href={`#${i.id}`}
-                                title="Remove"
-                                onClick={() => onClickRemove(i.id)}
-                            >
-                                &#10007;
-                            </button>
-                            <p style={{ display: i.display }}>{i.summary}</p>
-                        </li>
-                    ))
-
-                    }
-                </ul>
-            </article>
+            <AddArticle
+                name="Articles"
+                title={title}
+                summary={summary}
+                onChangeTitle={onChangeTitle}
+                onChangeSummary={onChangeSummary}
+                onClickAdd={onClickAdd}
+            />
+            <ArticleList
+                articles={articles}
+                onClickRemove={onClickRemove}
+            />
         </section>
     )
 }

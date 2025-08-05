@@ -1,4 +1,4 @@
-import TemaJs from "./components/context-hook-type-checking/TemaJs";
+import TemaTs from "./components/context-hook-type-checking/TemaTs";
 
 type AppProps = {
   message: string;
@@ -7,7 +7,7 @@ type AppProps = {
 function App({ message }: AppProps) {
   return (<div>
     <p>{message}</p>
-    <TemaJs />
+    <TemaTs />
   </div>)
 }
 

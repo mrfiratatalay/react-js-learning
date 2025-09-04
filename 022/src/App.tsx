@@ -1,35 +1,59 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import {lazy, Suspense, useState} from "react";
+import {ClockLoader} from "react-spinners";
 
-function App() {
-  const [count, setCount] = useState(0)
+const First = lazy(() => import("./First"));
+const Second = lazy(() => import("./Second"));
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+type ShowComponentProps = {
+    name: string;
 }
 
-export default App
+
+function ShowComponent({name}: ShowComponentProps) {
+    switch (name) {
+        case "first":
+            return <First />;
+        case "second":
+            return <Second />;
+        default:
+            return null;
+    }
+}
+
+function App() {
+    const [component, setComponent] = useState("");
+
+    return (
+        <>
+            <label>
+                Load Component:{" "}
+                <select
+                    value={component}
+                    onChange={(e) => setComponent(e.target.value)}
+                >
+                    <option value="">None</option>
+                    <option value="first">First</option>
+                    <option value="second">Second</option>
+                </select>
+            </label>
+
+            <Suspense fallback={
+                <div>
+                    <ClockLoader color="red" />
+                    <p>Loading ...</p>
+                </div>}>
+                <ShowComponent name={component} />
+            </Suspense>
+
+
+        </>
+    )
+}
+
+export default App;
+
+
+
+
+
+

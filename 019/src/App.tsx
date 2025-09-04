@@ -1,6 +1,30 @@
-import MyComponent from "./MyComponent.tsx";
+/*
+import * as React from "react";
+
+function App() {
+    const [MyComponent, setMyComponent] = React.useState<() => React.ReactNode>(
+        () => () => null
+    );
+
+    React.useEffect(() => {
+        import("./MyComponent").then((module) => {
+            setMyComponent(() => module.default);
+        });
+    }, []);
+
+    return <MyComponent />;
+}
+
+export default App;
+
+*/
+
+import {lazy} from "react";
+
+const MyComponent = lazy(() => import("./MyComponent"));
 
 function App() {
     return <MyComponent />
 }
+
 export default App;

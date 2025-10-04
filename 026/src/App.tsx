@@ -1,11 +1,13 @@
 import Button from '@mui/material/Button';
+import Drawer from '@mui/material/Drawer';
+import List from '@mui/material/List';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemText from '@mui/material/ListItemText';
 import { useState } from 'react';
 import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
 import First from './First';
 import Second from './Second';
 import Third from './Third';
-import Drawer from '@mui/material/Drawer';
-import List from '@mui/material/List';
 
 const links = [
   {
@@ -35,7 +37,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Button>Open Nav</Button>
+      <Button onClick={toggleDrawer}>Open Nav</Button>
       <section>
         <Routes>
           <Route path="/first" element={<First />} />
@@ -43,12 +45,27 @@ function App() {
           <Route path="/third" element={<Third />} />
         </Routes>
       </section>
-      <Drawer>
-        <div>
-          <List>
-            <NavLink>
-              
-            </NavLink>
+      <Drawer open={open} onClose={toggleDrawer}>
+        <div
+          style={{ width: 250 }}
+          role="presentation"
+          onClick={toggleDrawer}
+          onKeyDown={toggleDrawer}
+        >
+          <List component="nav">
+            {links.map((link) => (
+              <NavLink
+                key={link.url}
+                to={link.url}
+                style={{ color: 'black', textDecoration: 'none' }}
+              >
+                {({ isActive }) => (
+                  <ListItemButton selected={isActive}>
+                    <ListItemText primary={link.name} />
+                  </ListItemButton>
+                )}
+              </NavLink>
+            ))}
           </List>
         </div>
       </Drawer>

@@ -2,6 +2,7 @@ import {
   createBrowserRouter,
   Link,
   matchPath,
+  Outlet,
   RouterProvider,
   useLocation,
 } from 'react-router-dom';
@@ -56,6 +57,7 @@ function RouteLayout() {
         <Tab label="Item Two" component={Link} to="/page2" value="/page2" />
         <Tab label="Item Three" component={Link} to="/page3" value="/page3" />
       </Tabs>
+      <Outlet />
     </Box>
   );
 }

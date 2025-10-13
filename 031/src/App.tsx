@@ -1,5 +1,6 @@
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
+import CustomizingThemes from './CustomizingThemes';
 
 const StyledButton = styled(Button)(({ theme }) => ({
   '&.MuiButton-root': { margin: theme.spacing(1) },
@@ -15,8 +16,9 @@ function App() {
       <StyledButton size="small" variant="outlined">
         Third
       </StyledButton>
+
+      <CustomizingThemes />
     </>
   );
 }
 export default App;
-

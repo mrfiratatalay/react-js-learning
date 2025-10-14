@@ -1,5 +1,6 @@
+import BatchingUpdates from './BatchingUpdates';
+
 function App() {
-  return (
-    <h1>Yne Uniteye Artik Gecebilirim....</h1>
-  )
+  return <BatchingUpdates />;
 }
+export default App;

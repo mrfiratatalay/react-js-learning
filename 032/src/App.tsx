@@ -3,7 +3,6 @@ import PrioritizingUpdates from './PrioritizingUpdates';
 function App() {
   return (
     <>
-      <PrioritizingUpdates />
     </>
   );
 }

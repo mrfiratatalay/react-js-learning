@@ -1,6 +1,10 @@
-import BatchingUpdates from './BatchingUpdates';
+import PrioritizingUpdates from './PrioritizingUpdates';
 
 function App() {
-  return <BatchingUpdates />;
+  return (
+    <>
+      <PrioritizingUpdates />
+    </>
+  );
 }
 export default App;

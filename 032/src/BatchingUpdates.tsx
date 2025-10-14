@@ -10,7 +10,6 @@ function BatchingUpdates() {
       }
     }, 1);
   }
-
   return (
     <div>
       <p>

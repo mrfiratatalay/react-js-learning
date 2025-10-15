@@ -1,8 +1,9 @@
-import PrioritizingUpdates from './PrioritizingUpdates';
+import AsyncUpdates from './AsyncUpdates';
 
 function App() {
   return (
     <>
+      <AsyncUpdates />
     </>
   );
 }

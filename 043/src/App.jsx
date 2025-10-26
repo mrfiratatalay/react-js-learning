@@ -7,9 +7,9 @@ function App() {
 
   //STORE DAN ACTION LARI CEKMEK.
   const increment = useCounterStore((state) => state.increment);
-  const decrement = useCounterStore((state) => state.increment);
+  const decrement = useCounterStore((state) => state.decrement);
   const reset = useCounterStore((state) => state.reset);
-  const fetchCount = useCounterStore((state) => state.fetchCount);
+  const fetchCount = useCounterStore((state) => state.fetchCountFromServer);
 
   return (
     <div>
